@@ -38,7 +38,7 @@ test.describe("PRODUCT CURD SUITE", () => {
         await expect(productPage.getProductCardByName('Adidas Sneakers')).toBeVisible();
     })
 
-    test.only('Verify Adding New Product', async () => {
+    test('Verify Adding New Product', async () => {
         await productPage.getProductNameTextBox().fill(newProduct.name);
         await productPage.getSKUTextBox().fill(newProduct.sku);
         await productPage.getPriceTextBox().fill(newProduct.price);
@@ -52,7 +52,7 @@ test.describe("PRODUCT CURD SUITE", () => {
         await page.waitForTimeout(6000);
     })
 
-    test.only('Verify deleting product', async () => {
+    test('Verify deleting product', async () => {
         page.once("dialog", dialog => dialog.accept());
         await productPage.getProductDeleteLink(productPage.getProductCardByName(newProduct.name)).click();
         await expect(productPage.getProductCardByName(newProduct.name)).not.toBeVisible();
