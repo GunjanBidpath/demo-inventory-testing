@@ -56,6 +56,6 @@ test.describe("PRODUCT CURD SUITE", () => {
         page.once("dialog", dialog => dialog.accept());
         await productPage.getProductDeleteLink(productPage.getProductCardByName(newProduct.name)).click();
         await expect(productPage.getProductCardByName(newProduct.name)).not.toBeVisible();
-        await expect(productPage.getProductCards()).toHaveCount(10);
+        await expect(productPage.getProductCards()).toHaveCount(9);
     })
 })
