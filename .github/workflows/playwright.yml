@@ -32,6 +32,10 @@ jobs:
 
     - name: Start Frontend
       run: docker compose -f inventorytrack-frontend/docker-compose.yml up -d --build
+
+    - name: Debug API availability
+      run: curl -i http://localhost:4000/products
+      
     - name: Wait for services to be healthy
       run: |
         sleep 15
