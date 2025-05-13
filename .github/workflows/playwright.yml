@@ -22,8 +22,14 @@ jobs:
       with:
         repository: GunjanBidpath/demo-inventory-backend
         path: inventorytrack-backend
+    
     - name: Start Backend
-      run: docker compose -f inventorytrack-backend/docker-compose.yml up -d --build
+      run: docker compose -f inventorytrack-backend/docker-compose.yml up -d --build || true
+
+    - name: Check Postgres Logs
+      run: docker logs $(docker ps -aqf "name=postgres-db")
+
+
     - name: Start Frontend
       run: docker compose -f inventorytrack-frontend/docker-compose.yml up -d --build
     - name: Wait for services to be healthy
